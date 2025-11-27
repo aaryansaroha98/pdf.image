@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Compressor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Image & PDF Tool</h1>
+        <p>Compress images/PDFs or create PDFs from images with target size control.</p>
+
+        <div class="upload-section">
+            <input type="file" id="imageInput" accept="image/*,.pdf" multiple>
+            <label for="imageInput">Choose Images</label>
+        </div>
+
+        <div class="mode-selection">
+            <label><input type="radio" name="mode" value="compress" checked> Compress Files</label>
+            <label><input type="radio" name="mode" value="createpdf"> Create PDF from Images</label>
+        </div>
+
+        <div id="compressionSettings">
+            <label for="compressionPercentage">Compression Percentage: <span id="percentageValue">50</span>%</label>
+            <input type="range" id="compressionPercentage" min="10" max="90" value="50" step="5">
+        </div>
+
+        <div id="pdfSettings" class="hidden">
+            <label for="targetSize">Target PDF Size (MB): <input type="number" id="targetSize" min="0.1" max="100" step="0.1" value="5"></label>
+        </div>
+
+        <button id="compressBtn">Compress Files</button>
+
+        <div id="progressContainer" class="hidden">
+            <div class="progress-bar">
+                <div id="progressBar" class="progress-fill"></div>
+            </div>
+            <p id="progressText">Processing...</p>
+        </div>
+
+        <div id="results"></div>
+
+        <footer>
+            <p>Made by Aaryan Saroha | Instagram: @aaryan_saroha98</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.2/dist/browser-image-compression.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
